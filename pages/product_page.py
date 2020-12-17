@@ -1,4 +1,3 @@
-# from selenium.webdriver.common.by import By
 from .locators import ProductPageLocators
 from .base_page import BasePage
 
@@ -34,11 +33,11 @@ class ProductPage(BasePage):
         assert product_price == message_basket_total, "No product price in the message"
 
     def should_not_be_success_message(self):
-        # Отрицательная проверка отсутствия уведомления о добавлении товара
+        # Проверка отсутствия уведомления о добавлении товара
         assert self.is_not_element_present(*ProductPageLocators.MESSAGE_ABOUT_ADDING), \
             "Success message is presented, but should not be"
 
     def should_be_disappeared_message(self):
-        # Отрицательная проверка исчезания уведомления о добавлении товара
+        # Проверка исчезания уведомления о добавлении товара
         assert self.is_disappeared(*ProductPageLocators.MESSAGE_ABOUT_ADDING), \
             "Success message is not disappeared, but should be"
