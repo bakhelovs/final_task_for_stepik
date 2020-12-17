@@ -4,6 +4,17 @@ from .locators import BasePageLocators
 
 
 class LoginPage(BasePage):
+    def register_new_user(self, email, password):
+        # В поле ввода email вводим email
+        self.browser.find_element(*LoginPageLocators.EMAIL_INPUT_REG_FORM).send_keys(email)
+        # В поле ввода пароля вводим password
+        self.browser.find_element(*LoginPageLocators.PASS_INPUT_REG_FORM).send_keys(password)
+        # В поле повторного ввода пароля вводим password
+        self.browser.find_element(*LoginPageLocators.PASS_CONFIRM_INPUT_REG_FORM).send_keys(password)
+        # Кликаем по кнопке "зарегестрировать"
+        self.browser.find_element(*LoginPageLocators.REG_BUTTON_REG_FORM).click()
+
+
     def should_be_login_page(self):
         self.should_be_login_url()
         self.should_be_login_form()
